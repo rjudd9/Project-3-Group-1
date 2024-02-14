@@ -75,7 +75,7 @@ restaurants = {
 
 def pin_artwork(artwork_name, artwork_file):
     # Pin the file to IPFS with Pinata
-    ipfs_file_hash = pin_file_to_ipfs(artwork_file.getvalue())
+    ipfs_file_hash = pin_file_to_ipfs(artwork_file.read())
 
     # Build a token metadata file for the artwork
     token_json = {
@@ -142,7 +142,7 @@ st.markdown("## Mint NFT")
 
 if st.button("Mint NFT"):
     # Use the `pin_artwork` helper function to pin the file to IPFS
-    artwork_ipfs_hash, token_json = pin_artwork(restaurants[restaurant][0], open(nft, "rb"))
+    artwork_ipfs_hash, token_json = pin_artwork(restaurants[restaurant]['name'], open(restaurants[restaurant]['image'], "rb"))
 
     # Mint the NFT
     tx_hash = smart_contract.functions.mintNFT(
