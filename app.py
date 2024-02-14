@@ -43,30 +43,30 @@ smart_contract = load_contract()
 # Creating a database of restaurants
 
 restaurants = {
-    "Azure": [
-        "Azure",
-        "225 Front St W, Toronto, ON"
-        "0.5",
-        "image": "resto1.jpg",
-    ],
-    "Bangkok Garden": [
-        "Bangkok Garden",
-        "18 Elm St, Toronto, ON",
-        "0.5",
-        "resto2.jpg"
-    ],
-    "Chica": [
-        "Chica",
-        "131 Bloor St W, Toronto, ON",
-        "0.5",
-        "resto3.jpg"
-    ],
-    "Amano Pasta": [
-        "Amano Pasta",
-        "65 Front St W, Toronto, ON",
-        "0.5",
-        "resto4.jpg"
-    ]
+    "Azure": {
+        "name": "Azure",
+        "address": "225 Front St W, Toronto, ON",
+        "cost": "0.5",
+        "image": "resto_1.jpg",
+    },
+    "Bangkok Garden": {
+        "name": "Bangkok Garden",
+        "address": "18 Elm St, Toronto, ON",
+        "cost": "0.5",
+        "image": "resto_2.jpg"
+    },
+    "Chica": {
+        "name": "Chica",
+        "address": "131 Bloor St W, Toronto, ON",
+        "cost": "0.5",
+        "image": "resto_3.jpg"
+    },
+    "Amano Pasta": {
+        "name": "Amano Pasta",
+        "address": "65 Front St W, Toronto, ON",
+        "cost": "0.5",
+        "image": "resto_4.jpg"
+    }
 }
 
 
@@ -106,11 +106,11 @@ restaurant = st.selectbox("Select a Restaurant", list(restaurants.keys()))
 def list_restaurant():
     list_r = list(restaurants.values())
 
-    for number in range(len(restaurants)):
-        st.image(list_r["image"], width=200)
-        st.write("Name: ", list[number][0])
-        st.write("Restaurant Address: ", list[number][1])
-        st.write("Cost: ", list[number][2], "ETH")
+    for number in range(len(list_r)):
+        st.image(list_r[number]["image"], width=200)
+        st.write("Name: ", list_r[number]["name"])
+        st.write("Restaurant Address: ", list_r[number]["address"])
+        st.write("Cost: ", list_r[number]["cost"], "ETH")
         st.text(" \n")
 
 list_restaurant()
@@ -123,13 +123,12 @@ st.sidebar.write("Balance: ", w3.eth.get_balance(address))
 
 st.sidebar.markdown("## Restaurant Information")
 
-st.sidebar.write("Name: ", restaurants[restaurant][0])
-st.sidebar.write("Address: ", restaurants[restaurant][1])
-st.sidebar.write("Cost: ", restaurants[restaurant][2])
+st.sidebar.write("Name: ", [restaurant][0])
+
 
 number_passes = st.sidebar.number_input("Number of Passes", min_value=1, max_value=10, value=1)
 
-total = float(restaurants[restaurant][2]) * number_passes
+total = float(0.5) * number_passes
 st.sidebar.write("Total: ", total, "ETH")
 
 # Setting the NFT gif
