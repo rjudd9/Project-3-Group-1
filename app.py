@@ -140,22 +140,12 @@ nft = st.image("NFT_Card_optimized.gif")
 
 st.markdown("## Mint NFT")
 
-if st.button("Mint NFT"):
-    # Use the `pin_artwork` helper function to pin the file to IPFS
-    artwork_ipfs_hash, token_json = pin_artwork(restaurants[restaurant]['name'], open(restaurants[restaurant]['image'], "rb"))
+if st.button("Mint NFT", total):
 
     # Mint the NFT
     tx_hash = smart_contract.functions.mintNFT(
-        address,
-        artwork_ipfs_hash,
-        total
-    ).transact()
+    )
 
     st.write("Minting NFT...")
-    st.write("Transaction Hash: ", tx_hash.hex())
-    receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-
-    st.write("Transaction receipt mined:")
-    st.write(dict(receipt))
     st.balloons()
 
