@@ -11,4 +11,4 @@ Elite Eats (EE) is a usable NFT asset. On its utility, EE allows you VIP access 
 We have created a Smart Contract with all functions in relation to buying, transfering and selling an NFT. We have built a user interface using streamlit to buy the NFT. In order to demonstrate the functionality we are using wallet addresses from Ganache. 
 
 # Frontend of the Project
-We have created a website using Wix to advertise and present the NFT. 
+We have created a website using Wix to advertise and present the NFT. The link to view the website is here: https://rnjudd9.wixsite.com/elite-eats
